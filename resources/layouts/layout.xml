@@ -1,0 +1,7 @@
+<layouts>
+	<layout id="SingleDiceLayout">
+		<drawable class="Background"/>
+		<drawable class="Dice"/>
+	</layout>
+</layouts>
+

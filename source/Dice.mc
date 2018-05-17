@@ -4,6 +4,7 @@ using Toybox.Math as Math;
 
 class Dice extends Ui.Drawable {
 
+	hidden const ROLL_ME = "ROLL ME";
 	hidden const MAX_SIZE = 100;
 	hidden const SIZE_FACTOR = 2.0f/3.0f;
 	hidden const PEN_WIDTH = 3;
@@ -46,7 +47,7 @@ class Dice extends Ui.Drawable {
 		dc.drawRoundedRectangle(x, y, size, size, radius);
 		switch (value) {
 			case 0:
-				dc.drawText(width/2, height/2, Gfx.FONT_LARGE, "ROLL ME", Gfx.TEXT_JUSTIFY_CENTER | Gfx.TEXT_JUSTIFY_VCENTER);
+				drawRollMeText(dc, size);
 				break;
 			case 1:
 				drawCentralDot(dc, radius);
@@ -72,6 +73,12 @@ class Dice extends Ui.Drawable {
 				drawAngularDownDots(dc, size, radius);
 				drawSideDots(dc, size, radius);
 		}
+	}
+	
+	hidden function drawRollMeText(dc, size) {
+		var font = dc.getTextWidthInPixels(ROLL_ME, Gfx.FONT_LARGE) < size
+				? Gfx.FONT_LARGE : Gfx.FONT_SMALL;
+		dc.drawText(dc.getWidth()/2, dc.getHeight()/2, font, ROLL_ME, Gfx.TEXT_JUSTIFY_CENTER | Gfx.TEXT_JUSTIFY_VCENTER);
 	}
 	
 	hidden function drawCentralDot(dc, radius) {

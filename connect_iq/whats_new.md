@@ -1,2 +1,1 @@
-* Added support for Approach S60
-* Improved "ROLL ME" appearance
+* Added support for all devices
